@@ -12,7 +12,10 @@ class _CalculatorState extends State<Calculator> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      appBar: AppBar(title: const Text('CalculatorX'), backgroundColor: Colors.black,),
+      appBar: AppBar(
+        title: const Text('CalculatorX'),
+        backgroundColor: Colors.black,
+      ),
     );
   }
 }
