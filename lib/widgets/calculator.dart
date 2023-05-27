@@ -11,10 +11,22 @@ class _CalculatorState extends State<Calculator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        title: const Text('CalculatorX'),
-        backgroundColor: Colors.black,
+      //backgroundColor: Colors.black,
+      body: Row(
+        children: [
+          ElevatedButton(
+            onPressed: () {},
+            //style: ButtonStyle(backgroundColor: Colors.grey),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: const [
+                Icon(Icons.sunny),
+                Icon(Icons.nightlight),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
