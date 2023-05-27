@@ -12,10 +12,11 @@ class MyApp extends StatelessWidget {
       title: 'CalculatorX',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Colors.black,
+        //iconTheme: const IconThemeData().copyWith(color: Colors.black87),
         brightness: Brightness.light,
       ),
       darkTheme: ThemeData(
+        primaryColor: Colors.black,
         brightness: Brightness.dark,
       ),
       //themeMode: ThemeMode.light,
