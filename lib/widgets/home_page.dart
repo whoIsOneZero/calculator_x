@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(88.0, 48.0),
                       backgroundColor: Colors.blueGrey[900],
                       elevation: 4.0,
                       shape: RoundedRectangleBorder(
@@ -30,12 +31,16 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     child: Row(
-                      children: const [
-                        Icon(Icons.wb_sunny_outlined),
-                        SizedBox(
-                          width: 20.0,
+                      children: [
+                        IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.wb_sunny_outlined)),
+                        const SizedBox(
+                          width: 2.0,
                         ),
-                        Icon(Icons.nightlight_outlined),
+                        IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.nightlight_outlined)),
                       ],
                     ),
                   ),
