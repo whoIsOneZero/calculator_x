@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
                   child: ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(88.0, 48.0),
+                      minimumSize: const Size(88.0, 50.0),
                       backgroundColor: Colors.blueGrey[900],
                       elevation: 4.0,
                       shape: RoundedRectangleBorder(
@@ -68,10 +68,22 @@ class _HomePageState extends State<HomePage> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Buttons(buttonText: 'AC', onPressed: () {}),
-                        Buttons(buttonText: '+/-', onPressed: () {}),
-                        Buttons(buttonText: '*/*', onPressed: () {}),
-                        Buttons(buttonText: '/', onPressed: () {}),
+                        Buttons(
+                            buttonText: 'C',
+                            myColor: Colors.green,
+                            onPressed: () {}),
+                        Buttons(
+                            buttonText: '+/-',
+                            myColor: Colors.green,
+                            onPressed: () {}),
+                        Buttons(
+                            buttonText: '%',
+                            myColor: Colors.green,
+                            onPressed: () {}),
+                        Buttons(
+                            buttonText: '÷',
+                            myColor: Colors.red,
+                            onPressed: () {}),
                       ],
                     ),
                     Row(
@@ -80,7 +92,10 @@ class _HomePageState extends State<HomePage> {
                         Buttons(buttonText: '7', onPressed: () {}),
                         Buttons(buttonText: '8', onPressed: () {}),
                         Buttons(buttonText: '9', onPressed: () {}),
-                        Buttons(buttonText: 'X', onPressed: () {}),
+                        Buttons(
+                            buttonText: 'x',
+                            myColor: Colors.red,
+                            onPressed: () {}),
                       ],
                     ),
                     Row(
@@ -89,7 +104,10 @@ class _HomePageState extends State<HomePage> {
                         Buttons(buttonText: '4', onPressed: () {}),
                         Buttons(buttonText: '5', onPressed: () {}),
                         Buttons(buttonText: '6', onPressed: () {}),
-                        Buttons(buttonText: '-', onPressed: () {}),
+                        Buttons(
+                            buttonText: '–',
+                            myColor: Colors.red,
+                            onPressed: () {}),
                       ],
                     ),
                     Row(
@@ -98,19 +116,27 @@ class _HomePageState extends State<HomePage> {
                         Buttons(buttonText: '1', onPressed: () {}),
                         Buttons(buttonText: '2', onPressed: () {}),
                         Buttons(buttonText: '3', onPressed: () {}),
-                        Buttons(buttonText: '+', onPressed: () {}),
+                        Buttons(
+                            buttonText: '+',
+                            myColor: Colors.red,
+                            onPressed: () {}),
                       ],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Buttons(
-                          buttonText: 'B',
-                          onPressed: () {},
-                        ),
+                            myIcon: const Icon(Icons.undo, color: Colors.red),
+                            onPressed: () {}),
                         Buttons(buttonText: '0', onPressed: () {}),
-                        Buttons(buttonText: '.', onPressed: () {}),
-                        Buttons(buttonText: '=', onPressed: () {}),
+                        Buttons(
+                            buttonText: '●',
+                            myColor: Colors.red,
+                            onPressed: () {}),
+                        Buttons(
+                            buttonText: '=',
+                            myColor: Colors.red,
+                            onPressed: () {}),
                       ],
                     ),
                   ],
@@ -125,13 +151,17 @@ class _HomePageState extends State<HomePage> {
 }
 
 class Buttons extends StatelessWidget {
-  final String buttonText;
   final VoidCallback onPressed;
+  final String? buttonText;
+  final Icon? myIcon;
+  final Color? myColor;
 
   const Buttons({
     Key? key,
-    required this.buttonText,
     required this.onPressed,
+    this.buttonText,
+    this.myIcon,
+    this.myColor,
   }) : super(key: key);
 
   @override
@@ -147,7 +177,11 @@ class Buttons extends StatelessWidget {
             borderRadius: BorderRadius.circular(14.0),
           ),
         ),
-        child: Text(buttonText, style: const TextStyle(fontSize: 20.0)),
+        child: myIcon ??
+            Text(
+              buttonText!,
+              style: TextStyle(fontSize: 26.0, color: myColor ?? Colors.white),
+            ),
       ),
     );
   }
