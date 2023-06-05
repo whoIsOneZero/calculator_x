@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class Calculator extends StatefulWidget {
-  const Calculator({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<Calculator> createState() => _CalculatorState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _CalculatorState extends State<Calculator> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +17,7 @@ class _CalculatorState extends State<Calculator> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 36.0),
+                padding: const EdgeInsets.only(top: 30.0),
                 child: Align(
                   alignment: Alignment.topCenter,
                   child: ElevatedButton(
@@ -29,17 +29,14 @@ class _CalculatorState extends State<Calculator> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 10.0, bottom: 10.0),
-                      child: Row(
-                        children: const [
-                          Icon(Icons.wb_sunny_outlined),
-                          SizedBox(
-                            width: 20.0,
-                          ),
-                          Icon(Icons.nightlight_outlined),
-                        ],
-                      ),
+                    child: Row(
+                      children: const [
+                        Icon(Icons.wb_sunny_outlined),
+                        SizedBox(
+                          width: 20.0,
+                        ),
+                        Icon(Icons.nightlight_outlined),
+                      ],
                     ),
                   ),
                 ),
@@ -63,8 +60,7 @@ class _CalculatorState extends State<Calculator> {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(
-                          top: 8.0, right: 8.0, left: 8.0),
+                      padding: const EdgeInsets.only(top: 8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -76,8 +72,7 @@ class _CalculatorState extends State<Calculator> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
-                          top: 8.0, right: 8.0, left: 8.0),
+                      padding: const EdgeInsets.only(top: 8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -89,8 +84,7 @@ class _CalculatorState extends State<Calculator> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
-                          top: 8.0, right: 8.0, left: 8.0),
+                      padding: const EdgeInsets.only(top: 8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -102,8 +96,7 @@ class _CalculatorState extends State<Calculator> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
-                          top: 8.0, right: 8.0, left: 8.0),
+                      padding: const EdgeInsets.only(top: 8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
@@ -115,8 +108,7 @@ class _CalculatorState extends State<Calculator> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(
-                          top: 8.0, right: 8.0, left: 8.0),
+                      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [

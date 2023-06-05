@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/calculator.dart';
+import 'package:flutter/services.dart';
+import '../widgets/home_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -8,6 +9,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // To make this screen full screen.
+    // It will hide status bar and notch.
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+
     return MaterialApp(
       title: 'CalculatorX',
       debugShowCheckedModeBanner: false,
@@ -20,13 +25,10 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.black,
         iconTheme: const IconThemeData().copyWith(color: Colors.white),
         brightness: Brightness.dark,
-        /*colorScheme: ColorScheme.fromSwatch()
-            .copyWith(secondary: const Color(0xFF1DB954))
-            .copyWith(background: Colors.black),*/
       ),
       //themeMode: ThemeMode.light,
       themeMode: ThemeMode.dark,
-      home: const Calculator(),
+      home: const HomePage(),
     );
   }
 }
