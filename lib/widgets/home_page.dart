@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 30.0),
+                padding: const EdgeInsets.only(top: 25.0),
                 child: Align(
                   alignment: Alignment.topCenter,
                   child: ElevatedButton(
@@ -58,69 +58,55 @@ class _HomePageState extends State<HomePage> {
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Buttons(buttonText: 'AC', onPressed: () {}),
-                          Buttons(buttonText: '+/-', onPressed: () {}),
-                          Buttons(buttonText: '*/*', onPressed: () {}),
-                          Buttons(buttonText: '/', onPressed: () {}),
-                        ],
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Buttons(buttonText: 'AC', onPressed: () {}),
+                        Buttons(buttonText: '+/-', onPressed: () {}),
+                        Buttons(buttonText: '*/*', onPressed: () {}),
+                        Buttons(buttonText: '/', onPressed: () {}),
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Buttons(buttonText: '7', onPressed: () {}),
-                          Buttons(buttonText: '8', onPressed: () {}),
-                          Buttons(buttonText: '9', onPressed: () {}),
-                          Buttons(buttonText: 'X', onPressed: () {}),
-                        ],
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Buttons(buttonText: '7', onPressed: () {}),
+                        Buttons(buttonText: '8', onPressed: () {}),
+                        Buttons(buttonText: '9', onPressed: () {}),
+                        Buttons(buttonText: 'X', onPressed: () {}),
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Buttons(buttonText: '4', onPressed: () {}),
-                          Buttons(buttonText: '5', onPressed: () {}),
-                          Buttons(buttonText: '6', onPressed: () {}),
-                          Buttons(buttonText: '-', onPressed: () {}),
-                        ],
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Buttons(buttonText: '4', onPressed: () {}),
+                        Buttons(buttonText: '5', onPressed: () {}),
+                        Buttons(buttonText: '6', onPressed: () {}),
+                        Buttons(buttonText: '-', onPressed: () {}),
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Buttons(buttonText: '1', onPressed: () {}),
-                          Buttons(buttonText: '2', onPressed: () {}),
-                          Buttons(buttonText: '3', onPressed: () {}),
-                          Buttons(buttonText: '+', onPressed: () {}),
-                        ],
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Buttons(buttonText: '1', onPressed: () {}),
+                        Buttons(buttonText: '2', onPressed: () {}),
+                        Buttons(buttonText: '3', onPressed: () {}),
+                        Buttons(buttonText: '+', onPressed: () {}),
+                      ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Buttons(
-                            buttonText: 'B',
-                            onPressed: () {},
-                          ),
-                          Buttons(buttonText: '0', onPressed: () {}),
-                          Buttons(buttonText: '.', onPressed: () {}),
-                          Buttons(buttonText: '=', onPressed: () {}),
-                        ],
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Buttons(
+                          buttonText: 'B',
+                          onPressed: () {},
+                        ),
+                        Buttons(buttonText: '0', onPressed: () {}),
+                        Buttons(buttonText: '.', onPressed: () {}),
+                        Buttons(buttonText: '=', onPressed: () {}),
+                      ],
                     ),
                   ],
                 ),
