@@ -8,6 +8,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String output = "0";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,13 +36,13 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         IconButton(
                             onPressed: () {},
-                            icon: const Icon(Icons.wb_sunny_outlined)),
+                            icon: const Icon(Icons.light_mode_outlined)),
                         const SizedBox(
                           width: 2.0,
                         ),
                         IconButton(
                             onPressed: () {},
-                            icon: const Icon(Icons.nightlight_outlined)),
+                            icon: const Icon(Icons.dark_mode_outlined)),
                       ],
                     ),
                   ),
@@ -48,7 +50,21 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          Expanded(child: Container()),
+          Expanded(
+              child: Container(
+            alignment: Alignment.bottomRight,
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                const Text("2+3", style: TextStyle(fontSize: 35.0)),
+                const SizedBox(
+                  height: 4.0,
+                ),
+                Text("$output", style: TextStyle(fontSize: 50.0)),
+              ],
+            ),
+          )),
           Container(
             height: 360,
             decoration: BoxDecoration(
@@ -117,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                         myIcon: const Icon(Icons.undo, color: Colors.red),
                         onPressed: () {}),
                     Buttons(buttonText: '0', onPressed: () {}),
-                    Buttons(buttonText: '●', onPressed: () {}),
+                    Buttons(buttonText: '.', onPressed: () {}),
                     Buttons(
                         buttonText: '=', myColor: Colors.red, onPressed: () {}),
                   ],
