@@ -17,7 +17,7 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 25.0),
+                padding: const EdgeInsets.only(top: 8.0),
                 child: Align(
                   alignment: Alignment.topCenter,
                   child: ElevatedButton(
@@ -48,100 +48,82 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          const SizedBox(
-            height: 300.0,
-          ),
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.only(
-                  topRight: Radius.circular(24.0),
-                  topLeft: Radius.circular(24.0),
-                ),
-                color: Colors.blueGrey[900],
+          Expanded(child: Container()),
+          Container(
+            height: 360,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
+                topRight: Radius.circular(24.0),
+                topLeft: Radius.circular(24.0),
               ),
-              child: Align(
-                alignment: Alignment.bottomCenter,
-                child: Column(
+              color: Colors.blueGrey[900],
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Buttons(
-                            buttonText: 'C',
-                            myColor: Colors.green,
-                            onPressed: () {}),
-                        Buttons(
-                            buttonText: '+/-',
-                            myColor: Colors.green,
-                            onPressed: () {}),
-                        Buttons(
-                            buttonText: '%',
-                            myColor: Colors.green,
-                            onPressed: () {}),
-                        Buttons(
-                            buttonText: '÷',
-                            myColor: Colors.red,
-                            onPressed: () {}),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Buttons(buttonText: '7', onPressed: () {}),
-                        Buttons(buttonText: '8', onPressed: () {}),
-                        Buttons(buttonText: '9', onPressed: () {}),
-                        Buttons(
-                            buttonText: 'x',
-                            myColor: Colors.red,
-                            onPressed: () {}),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Buttons(buttonText: '4', onPressed: () {}),
-                        Buttons(buttonText: '5', onPressed: () {}),
-                        Buttons(buttonText: '6', onPressed: () {}),
-                        Buttons(
-                            buttonText: '–',
-                            myColor: Colors.red,
-                            onPressed: () {}),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Buttons(buttonText: '1', onPressed: () {}),
-                        Buttons(buttonText: '2', onPressed: () {}),
-                        Buttons(buttonText: '3', onPressed: () {}),
-                        Buttons(
-                            buttonText: '+',
-                            myColor: Colors.red,
-                            onPressed: () {}),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Buttons(
-                            myIcon: const Icon(Icons.undo, color: Colors.red),
-                            onPressed: () {}),
-                        Buttons(buttonText: '0', onPressed: () {}),
-                        Buttons(
-                            buttonText: '●',
-                            myColor: Colors.red,
-                            onPressed: () {}),
-                        Buttons(
-                            buttonText: '=',
-                            myColor: Colors.red,
-                            onPressed: () {}),
-                      ],
-                    ),
+                    Buttons(
+                        buttonText: 'C',
+                        myColor: Colors.green,
+                        onPressed: () {}),
+                    Buttons(
+                        buttonText: '+/-',
+                        myColor: Colors.green,
+                        onPressed: () {}),
+                    Buttons(
+                        buttonText: '%',
+                        myColor: Colors.green,
+                        onPressed: () {}),
+                    Buttons(
+                        buttonText: '÷', myColor: Colors.red, onPressed: () {}),
                   ],
                 ),
-              ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Buttons(buttonText: '7', onPressed: () {}),
+                    Buttons(buttonText: '8', onPressed: () {}),
+                    Buttons(buttonText: '9', onPressed: () {}),
+                    Buttons(
+                        buttonText: 'x', myColor: Colors.red, onPressed: () {}),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Buttons(buttonText: '4', onPressed: () {}),
+                    Buttons(buttonText: '5', onPressed: () {}),
+                    Buttons(buttonText: '6', onPressed: () {}),
+                    Buttons(
+                        buttonText: '–', myColor: Colors.red, onPressed: () {}),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Buttons(buttonText: '1', onPressed: () {}),
+                    Buttons(buttonText: '2', onPressed: () {}),
+                    Buttons(buttonText: '3', onPressed: () {}),
+                    Buttons(
+                        buttonText: '+', myColor: Colors.red, onPressed: () {}),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Buttons(
+                        myIcon: const Icon(Icons.undo, color: Colors.red),
+                        onPressed: () {}),
+                    Buttons(buttonText: '0', onPressed: () {}),
+                    Buttons(
+                        buttonText: '●', myColor: Colors.red, onPressed: () {}),
+                    Buttons(
+                        buttonText: '=', myColor: Colors.red, onPressed: () {}),
+                  ],
+                ),
+              ],
             ),
           ),
         ],
