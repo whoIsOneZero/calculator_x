@@ -9,7 +9,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String output = "0";
+  String _answer = "0";
+  double num1 = 0.0;
+  double num2 = 0.0;
+  String operand = "";
 
+  operation() {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
