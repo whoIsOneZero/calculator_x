@@ -117,8 +117,7 @@ class _HomePageState extends State<HomePage> {
                         myIcon: const Icon(Icons.undo, color: Colors.red),
                         onPressed: () {}),
                     Buttons(buttonText: '0', onPressed: () {}),
-                    Buttons(
-                        buttonText: '●', myColor: Colors.red, onPressed: () {}),
+                    Buttons(buttonText: '●', onPressed: () {}),
                     Buttons(
                         buttonText: '=', myColor: Colors.red, onPressed: () {}),
                   ],
