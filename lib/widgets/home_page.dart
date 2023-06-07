@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+String output = "0";
+String _answer = "0";
+double num1 = 0.0;
+double num2 = 0.0;
+String operand = "";
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -8,13 +14,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String output = "0";
-  String _answer = "0";
-  double num1 = 0.0;
-  double num2 = 0.0;
-  String operand = "";
-
-  operation() {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                 const SizedBox(
                   height: 4.0,
                 ),
-                Text("$output", style: TextStyle(fontSize: 50.0)),
+                Text(output, style: const TextStyle(fontSize: 50.0)),
               ],
             ),
           )),
@@ -84,63 +83,53 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Buttons(
-                        buttonText: 'C',
-                        myColor: Colors.green,
-                        onPressed: () {}),
-                    Buttons(
-                        buttonText: '+/-',
-                        myColor: Colors.green,
-                        onPressed: () {}),
-                    Buttons(
-                        buttonText: '%',
-                        myColor: Colors.green,
-                        onPressed: () {}),
-                    Buttons(
-                        buttonText: '÷', myColor: Colors.red, onPressed: () {}),
+                  children: const [
+                    Buttons(buttonText: 'C', myColor: Colors.green),
+                    Buttons(buttonText: '+/-', myColor: Colors.green),
+                    Buttons(buttonText: '%', myColor: Colors.green),
+                    Buttons(buttonText: '÷', myColor: Colors.red),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Buttons(buttonText: '7', onPressed: () {}),
-                    Buttons(buttonText: '8', onPressed: () {}),
-                    Buttons(buttonText: '9', onPressed: () {}),
-                    Buttons(
-                        buttonText: 'x', myColor: Colors.red, onPressed: () {}),
+                  children: const [
+                    Buttons(buttonText: '7'),
+                    Buttons(buttonText: '8'),
+                    Buttons(buttonText: '9'),
+                    Buttons(buttonText: 'x', myColor: Colors.red),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Buttons(buttonText: '4', onPressed: () {}),
-                    Buttons(buttonText: '5', onPressed: () {}),
-                    Buttons(buttonText: '6', onPressed: () {}),
-                    Buttons(
-                        buttonText: '–', myColor: Colors.red, onPressed: () {}),
+                  children: const [
+                    Buttons(buttonText: '4'),
+                    Buttons(buttonText: '5'),
+                    Buttons(buttonText: '6'),
+                    Buttons(buttonText: '–', myColor: Colors.red),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Buttons(buttonText: '1', onPressed: () {}),
-                    Buttons(buttonText: '2', onPressed: () {}),
-                    Buttons(buttonText: '3', onPressed: () {}),
-                    Buttons(
-                        buttonText: '+', myColor: Colors.red, onPressed: () {}),
+                  children: const [
+                    Buttons(buttonText: '1'),
+                    Buttons(buttonText: '2'),
+                    Buttons(buttonText: '3'),
+                    Buttons(buttonText: '+', myColor: Colors.red),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
+                  children: const [
+                    //Buttons(myIcon: const Icon(Icons.undo, color: Colors.red), buttonText: '←'),
                     Buttons(
-                        myIcon: const Icon(Icons.undo, color: Colors.red),
-                        onPressed: () {}),
-                    Buttons(buttonText: '0', onPressed: () {}),
-                    Buttons(buttonText: '.', onPressed: () {}),
-                    Buttons(
-                        buttonText: '=', myColor: Colors.red, onPressed: () {}),
+
+                        ///TODO: font size not changed yet
+                        buttonText: '←',
+                        myColor: Colors.red,
+                        myFontSize: 30.0),
+                    Buttons(buttonText: '0'),
+                    Buttons(buttonText: '.'),
+                    Buttons(buttonText: '=', myColor: Colors.red),
                   ],
                 ),
               ],
@@ -152,18 +141,20 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
+operation(String btnText) {}
+
 class Buttons extends StatelessWidget {
-  final VoidCallback onPressed;
-  final String? buttonText;
-  final Icon? myIcon;
+  final String buttonText;
   final Color? myColor;
+  final Icon? myIcon;
+  final double? myFontSize;
 
   const Buttons({
     Key? key,
-    required this.onPressed,
-    this.buttonText,
-    this.myIcon,
+    required this.buttonText,
     this.myColor,
+    this.myIcon,
+    this.myFontSize,
   }) : super(key: key);
 
   @override
@@ -172,7 +163,9 @@ class Buttons extends StatelessWidget {
       height: 65,
       width: 65,
       child: ElevatedButton(
-        onPressed: onPressed,
+        onPressed: () {
+          operation(buttonText);
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.black38,
           shape: RoundedRectangleBorder(
@@ -181,8 +174,9 @@ class Buttons extends StatelessWidget {
         ),
         child: myIcon ??
             Text(
-              buttonText!,
-              style: TextStyle(fontSize: 26.0, color: myColor ?? Colors.white),
+              buttonText,
+              style: TextStyle(
+                  fontSize: myFontSize ?? 26.0, color: myColor ?? Colors.white),
             ),
       ),
     );

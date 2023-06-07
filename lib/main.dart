@@ -12,6 +12,8 @@ class MyApp extends StatelessWidget {
     // To make this screen full screen.
     // It will hide status bar and notch.
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
     return MaterialApp(
       title: 'CalculatorX',
