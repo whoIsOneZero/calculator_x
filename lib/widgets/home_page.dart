@@ -16,6 +16,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    setState(() {
+      output = double.parse(_answer).toStringAsFixed(2);
+    });
     return Scaffold(
       body: Column(
         children: [
@@ -141,7 +144,44 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-operation(String btnText) {}
+operation(String btnText) {
+  if (btnText == "C") {
+    _answer = "0";
+    num1 = 0.0;
+    num2 = 0.0;
+    operand = "";
+  } else if (btnText == "+" ||
+      btnText == "-" ||
+      btnText == "x" ||
+      btnText == "÷") {
+    ///Because the buttonText(s) are of type int
+    num1 = double.parse(output);
+    operand = btnText;
+    _answer = "0";
+  } else if (btnText == "=") {
+    num2 = double.parse(output);
+
+    if (operand == "+") {
+      _answer = (num1 + num2).toString();
+    }
+    if (operand == "x") {
+      _answer = (num1 * num2).toString();
+    }
+    if (operand == "-") {
+      _answer = (num1 - num2).toString();
+    }
+    if (operand == "÷") {
+      _answer = (num1 / num2).toString();
+    }
+
+    ///After performing the operation
+    num1 = 0.0;
+    num2 = 0.0;
+    operand = "";
+  } else {
+    _answer += btnText;
+  }
+}
 
 class Buttons extends StatelessWidget {
   final String buttonText;
