@@ -1,10 +1,5 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-String output = "0";
-String _answer = "0";
-double num1 = 0.0;
-double num2 = 0.0;
-String operand = "";
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,6 +9,57 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String output = "0";
+  String _answer = "0";
+  double num1 = 0.0;
+  double num2 = 0.0;
+  String operand = "";
+
+  operation(String btnText) {
+    if (btnText == "C") {
+      _answer = "0";
+      num1 = 0.0;
+      num2 = 0.0;
+      operand = "";
+
+      ///For Clear
+      ///
+    } else if (btnText == "+" ||
+        btnText == "-" ||
+        btnText == "x" ||
+        btnText == "÷") {
+      num1 = double.parse(output);
+
+      ///Because the buttonText(s) are of type int
+      //
+      /// Fetching the operand
+      operand = btnText;
+      _answer = "0";
+    } else if (btnText == "=") {
+      num2 = double.parse(output);
+
+      if (operand == "+") {
+        _answer = (num1 + num2).toString();
+      }
+      if (operand == "x") {
+        _answer = (num1 * num2).toString();
+      }
+      if (operand == "-") {
+        _answer = (num1 - num2).toString();
+      }
+      if (operand == "÷") {
+        _answer = (num1 / num2).toString();
+      }
+
+      ///After performing the operation
+      num1 = 0.0;
+      num2 = 0.0;
+      operand = "";
+    } else {
+      _answer += btnText;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     setState(() {
@@ -57,6 +103,8 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
+
+          ///For the output
           Expanded(
               child: Container(
             alignment: Alignment.bottomRight,
@@ -144,51 +192,13 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-operation(String btnText) {
-  if (btnText == "C") {
-    _answer = "0";
-    num1 = 0.0;
-    num2 = 0.0;
-    operand = "";
-  } else if (btnText == "+" ||
-      btnText == "-" ||
-      btnText == "x" ||
-      btnText == "÷") {
-    ///Because the buttonText(s) are of type int
-    num1 = double.parse(output);
-    operand = btnText;
-    _answer = "0";
-  } else if (btnText == "=") {
-    num2 = double.parse(output);
-
-    if (operand == "+") {
-      _answer = (num1 + num2).toString();
-    }
-    if (operand == "x") {
-      _answer = (num1 * num2).toString();
-    }
-    if (operand == "-") {
-      _answer = (num1 - num2).toString();
-    }
-    if (operand == "÷") {
-      _answer = (num1 / num2).toString();
-    }
-
-    ///After performing the operation
-    num1 = 0.0;
-    num2 = 0.0;
-    operand = "";
-  } else {
-    _answer += btnText;
-  }
-}
-
 class Buttons extends StatelessWidget {
   final String buttonText;
   final Color? myColor;
   final Icon? myIcon;
   final double? myFontSize;
 
+  ///The constructor
   const Buttons({
     Key? key,
     required this.buttonText,
@@ -199,12 +209,19 @@ class Buttons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final value = _HomePageState();
     return SizedBox(
       height: 65,
       width: 65,
       child: ElevatedButton(
         onPressed: () {
-          operation(buttonText);
+          ///Created and instantiation of the class
+          value.operation(buttonText);
+
+          ///For debugging
+          if (kDebugMode) {
+            print(buttonText);
+          }
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.black38,
