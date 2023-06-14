@@ -72,7 +72,25 @@ class MyButtons extends StatelessWidget {
         child: SizedBox(
           height: 65,
           width: 65,
-          child: ElevatedButton(
+          child: ClipRect(
+            child: Container(
+              child: myIcon ??
+                  Text(
+                    buttonText,
+                    style: TextStyle(
+                        fontSize: myFontSize ?? 26.0,
+                        color: myColor ?? Colors.white),
+                  ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/*
+child: ElevatedButton(
             onPressed: () {},
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.black38,
@@ -88,8 +106,4 @@ class MyButtons extends StatelessWidget {
                       color: myColor ?? Colors.white),
                 ),
           ),
-        ),
-      ),
-    );
-  }
-}
+ */
