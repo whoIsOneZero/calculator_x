@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'icon_buttons.dart';
 
+//A library for parsing and evaluating mathematical expressions.
+import 'package:math_expressions/math_expressions.dart';
+
 class NewHomePage extends StatefulWidget {
   const NewHomePage({Key? key}) : super(key: key);
 
@@ -85,11 +88,11 @@ class _NewHomePageState extends State<NewHomePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                const Text("2+3", style: TextStyle(fontSize: 35.0)),
+                Text(answer, style: const TextStyle(fontSize: 35.0)),
                 const SizedBox(
                   height: 4.0,
                 ),
-                Text("4", style: const TextStyle(fontSize: 50.0)),
+                Text(userInput, style: const TextStyle(fontSize: 50.0)),
               ],
             ),
           )),
@@ -97,7 +100,7 @@ class _NewHomePageState extends State<NewHomePage> {
 
           /// The calculator buttons
           Container(
-            height: 360,
+            height: 450,
             decoration: BoxDecoration(
               borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(24.0),
@@ -110,62 +113,88 @@ class _NewHomePageState extends State<NewHomePage> {
               children: [
                 Expanded(
                   flex: 3,
-                  child: Container(
-                    child: GridView.builder(
-                      itemCount: buttons.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 4),
-                      itemBuilder: (BuildContext context, int index) {
-                        // Clear Button
-                        if (index == 0) {
-                          return MyButtons(
-                            buttonTapped: () {
-                              setState(() {
-                                userInput = '';
-                                answer = '0';
-                              });
-                            },
-                            buttonText: buttons[index],
-                            myColor: Colors.blue[50],
-                          );
-                        }
+                  child: GridView.builder(
+                    itemCount: buttons.length,
 
-                        // +/- button
-                        else if (index == 1) {
-                          return MyButtons(
-                            buttonText: buttons[index],
-                            myColor: Colors.blue[50],
-                          );
-                        }
+                    ///Defines the layout of the grid
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 4),
+                    itemBuilder: (BuildContext context, int index) {
+                      // Clear Button
+                      if (index == 0) {
+                        return MyButtons(
+                          buttonTapped: () {
+                            setState(() {
+                              userInput = '';
+                              answer = '0';
+                            });
+                          },
+                          buttonText: buttons[index],
+                          myColor: Colors.blue[50],
+                        );
+                      }
 
-                        // %Button
-                        else if (index == 2) {
-                          return MyButtons(
-                            buttonTapped: () {
-                              setState(() {
-                                userInput += buttons[index];
-                              });
-                            },
-                            buttonText: buttons[index],
-                            myColor: Colors.blue[50],
-                          );
-                        }
+                      // +/- button
+                      else if (index == 1) {
+                        return MyButtons(
+                          buttonText: buttons[index],
+                          myColor: Colors.blue[50],
+                        );
+                      }
 
-                        //Delete Button
-                        else if (index == 3) {
-                          return MyButtons(
-                            buttonTapped: () {
-                              setState(() {
-                                userInput = userInput.substring(
-                                    0, userInput.length - 1);
-                              });
-                            },
-                            buttonText: buttons[index],
-                            myColor: Colors.blue[50],
-                          );
-                        }
-                      },
-                    ),
+                      // %Button
+                      else if (index == 2) {
+                        return MyButtons(
+                          buttonTapped: () {
+                            setState(() {
+                              userInput += buttons[index];
+                            });
+                          },
+                          buttonText: buttons[index],
+                          myColor: Colors.blue[50],
+                        );
+                      }
+
+                      //Delete Button
+                      else if (index == 3) {
+                        return MyButtons(
+                          buttonTapped: () {
+                            setState(() {
+                              ///Removes the last character from the 'userInput'
+                              userInput =
+                                  userInput.substring(0, userInput.length - 1);
+                            });
+                          },
+                          buttonText: buttons[index],
+                          myColor: Colors.blue[50],
+                        );
+                      }
+
+                      //Equal_to button
+                      else if (index == 18) {
+                        return MyButtons(
+                          buttonTapped: () {
+                            setState(() {
+                              equalPressed();
+                            });
+                          },
+                          buttonText: buttons[index],
+                        );
+                      }
+
+                      //  other buttons
+                      else {
+                        return MyButtons(
+                          buttonTapped: () {
+                            setState(() {
+                              userInput += buttons[index];
+                            });
+                          },
+                          buttonText: buttons[index],
+                        );
+                      }
+                    },
                   ),
                 ),
               ],
@@ -174,5 +203,22 @@ class _NewHomePageState extends State<NewHomePage> {
         ],
       ),
     );
+  }
+
+  // function to calculate the input operation
+  void equalPressed() {
+    String finaluserinput = userInput;
+
+    ///For the multiplication expression
+    finaluserinput = userInput.replaceAll('x', '*');
+
+    ///Instantiating the Parser() class
+    Parser p = Parser();
+    Expression exp = p.parse(finaluserinput);
+
+    ///Instantiating the ContextModel() class
+    ContextModel cm = ContextModel();
+    double eval = exp.evaluate(EvaluationType.REAL, cm);
+    answer = eval.toString();
   }
 }

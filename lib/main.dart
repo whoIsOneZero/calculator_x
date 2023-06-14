@@ -1,3 +1,4 @@
+import 'package:calculator_x/widgets/newhome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../widgets/home_page.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
       ),
       //themeMode: ThemeMode.light,
       themeMode: ThemeMode.dark,
-      home: const HomePage(),
+      home: NewHomePage(),
     );
   }
 }
