@@ -109,28 +109,65 @@ class _NewHomePageState extends State<NewHomePage> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Expanded(
-                    flex: 3,
-                    child: Container(
-                      child: GridView.builder(
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 4),
-                          itemBuilder: (BuildContext context, int index) {
-                            // Clear Button
-                            if (index == 0) {
-                              return MyButtons(
-                                buttonTapped: () {
-                                  setState(() {
-                                    userInput = '';
-                                    answer = '0';
-                                  });
-                                },
-                                buttonText: buttons[index],
-                                myColor: Colors.blue[50],
-                              );
-                            }
-                          }),
-                    ))
+                  flex: 3,
+                  child: Container(
+                    child: GridView.builder(
+                      itemCount: buttons.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 4),
+                      itemBuilder: (BuildContext context, int index) {
+                        // Clear Button
+                        if (index == 0) {
+                          return MyButtons(
+                            buttonTapped: () {
+                              setState(() {
+                                userInput = '';
+                                answer = '0';
+                              });
+                            },
+                            buttonText: buttons[index],
+                            myColor: Colors.blue[50],
+                          );
+                        }
+
+                        // +/- button
+                        else if (index == 1) {
+                          return MyButtons(
+                            buttonText: buttons[index],
+                            myColor: Colors.blue[50],
+                          );
+                        }
+
+                        // %Button
+                        else if (index == 2) {
+                          return MyButtons(
+                            buttonTapped: () {
+                              setState(() {
+                                userInput += buttons[index];
+                              });
+                            },
+                            buttonText: buttons[index],
+                            myColor: Colors.blue[50],
+                          );
+                        }
+
+                        //Delete Button
+                        else if (index == 3) {
+                          return MyButtons(
+                            buttonTapped: () {
+                              setState(() {
+                                userInput = userInput.substring(
+                                    0, userInput.length - 1);
+                              });
+                            },
+                            buttonText: buttons[index],
+                            myColor: Colors.blue[50],
+                          );
+                        }
+                      },
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
