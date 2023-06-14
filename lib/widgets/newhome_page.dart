@@ -83,12 +83,15 @@ class _NewHomePageState extends State<NewHomePage> {
           ///For the output
           Expanded(
               child: Container(
+            //color: Colors.amberAccent,
             alignment: Alignment.bottomRight,
             padding: const EdgeInsets.all(10.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text(answer, style: const TextStyle(fontSize: 35.0)),
+                Text(answer,
+                    style:
+                        const TextStyle(fontSize: 35.0, color: Colors.white)),
                 const SizedBox(
                   height: 4.0,
                 ),
