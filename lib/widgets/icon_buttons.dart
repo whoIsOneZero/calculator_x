@@ -1,65 +1,16 @@
 import 'package:flutter/material.dart';
 
-/*class MyButtons extends StatelessWidget {
-  final String buttonText;
-  final Color? myColor;
-  final Icon? myIcon;
-  final double? myFontSize;
-  final buttonTapped;
-
-  const MyButtons({
-    super.key,
-    required this.buttonText,
-    this.myColor,
-    this.myIcon,
-    this.myFontSize,
-    this.buttonTapped,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: buttonTapped,
-      child: Padding(
-        padding: const EdgeInsets.all(0.2),
-        child: SizedBox(
-          height: 65,
-          width: 65,
-          child: ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.black38,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(14.0),
-              ),
-            ),
-            child: myIcon ??
-                Text(
-                  buttonText,
-                  style: TextStyle(
-                      fontSize: myFontSize ?? 26.0,
-                      color: myColor ?? Colors.white),
-                ),
-          ),
-        ),
-      ),
-    );
-  }
-}*/
-
 class MyButtons extends StatelessWidget {
   final String buttonText;
   final Color? myColor;
   final Icon? myIcon;
-  final double? myFontSize;
-  final buttonTapped;
+  final void Function()? buttonTapped;
 
   const MyButtons({
     Key? key,
     required this.buttonText,
     this.myColor,
     this.myIcon,
-    this.myFontSize,
     this.buttonTapped,
   }) : super(key: key);
 
@@ -68,18 +19,24 @@ class MyButtons extends StatelessWidget {
     return GestureDetector(
       onTap: buttonTapped,
       child: Padding(
-        padding: const EdgeInsets.all(0.2),
-        child: SizedBox(
-          height: 65,
-          width: 65,
-          child: ClipRect(
+        padding: const EdgeInsets.fromLTRB(0.0, 8.0, 8.0, 0.0),
+        child: Material(
+          elevation: 1.0,
+          shadowColor: Theme.of(context).primaryColorDark,
+          borderRadius: BorderRadius.circular(20),
+          //TODO: Resize the buttons
+          child: SizedBox(
+            width: 5.0,
+            height: 5.0,
             child: Container(
+              ///The buttons themselves
+              color: Theme.of(context).scaffoldBackgroundColor,
+              alignment: Alignment.center,
               child: myIcon ??
                   Text(
                     buttonText,
-                    style: TextStyle(
-                        fontSize: myFontSize ?? 26.0,
-                        color: myColor ?? Colors.white),
+                    style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                        fontSize: 26.0, color: myColor ?? Colors.white),
                   ),
             ),
           ),
@@ -88,22 +45,3 @@ class MyButtons extends StatelessWidget {
     );
   }
 }
-
-/*
-child: ElevatedButton(
-            onPressed: () {},
-            style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.black38,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(14.0),
-              ),
-            ),
-            child: myIcon ??
-                Text(
-                  buttonText,
-                  style: TextStyle(
-                      fontSize: myFontSize ?? 26.0,
-                      color: myColor ?? Colors.white),
-                ),
-          ),
- */
